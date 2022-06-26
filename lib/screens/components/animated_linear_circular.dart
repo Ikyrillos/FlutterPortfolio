@@ -13,9 +13,9 @@ class AnimatedLinearProgressIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(
         tween: Tween<double>(begin: 0, end: percentageValue),
-        duration: defaultDuration,
+        duration: customDuration,
         builder: (context, double value, child) => Padding(
-              padding: const EdgeInsets.only(bottom: defaultPadding),
+              padding: const EdgeInsets.only(bottom: customPadding),
               child: Column(
                 children: [
                   Row(
@@ -32,7 +32,7 @@ class AnimatedLinearProgressIndicator extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(
-                    height: defaultPadding,
+                    height: customPadding,
                   ),
                   LinearProgressIndicator(
                     value: value,

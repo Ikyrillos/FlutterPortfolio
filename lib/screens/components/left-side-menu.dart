@@ -1,3 +1,5 @@
+import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio_dev/constants.dart';
@@ -22,7 +24,7 @@ class LeftSideMenu extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               controller: ScrollController(),
-              padding: const EdgeInsets.all(defaultPadding),
+              padding: const EdgeInsets.all(customPadding),
               child: Column(
                 children: [
                   AreaInfoText(label: 'Country:', text: 'Egypt'),
@@ -39,20 +41,20 @@ class LeftSideMenu extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: defaultPadding,
-                      ),
-                      Expanded(
-                        child: AnimatedCircularIndicator(
-                          percentageValue: 0.75,
-                          label: 'NodeJS',
-                        ),
-                      ),
-                      SizedBox(
-                        width: defaultPadding,
+                        width: customPadding,
                       ),
                       Expanded(
                         child: AnimatedCircularIndicator(
                           percentageValue: 0.60,
+                          label: 'NodeJS',
+                        ),
+                      ),
+                      SizedBox(
+                        width: customPadding,
+                      ),
+                      Expanded(
+                        child: AnimatedCircularIndicator(
+                          percentageValue: 0.40,
                           label: 'Angular',
                         ),
                       ),
@@ -64,7 +66,7 @@ class LeftSideMenu extends StatelessWidget {
                   const Coding(),
                   const Divider(),
                   Padding(
-                    padding: const EdgeInsets.all(defaultPadding),
+                    padding: const EdgeInsets.all(customPadding),
                     child: Text(
                       'Technologies',
                       style: Theme.of(context).textTheme.subtitle2,
@@ -74,45 +76,55 @@ class LeftSideMenu extends StatelessWidget {
                   const KnowledgeText(text: 'NodeJS, PostgreSQL, Express'),
                   const KnowledgeText(text: 'Angular, TypeScript, Git'),
                   const Divider(),
-                  TextButton(
-                    onPressed: () {},
-                    child: FittedBox(
-                      child: Row(
-                        children: [
-                          Text(
-                            'Download CV',
-                            style: Theme.of(context).textTheme.subtitle2,
-                          ),
-                          const SizedBox(
-                            width: defaultPadding,
-                          ),
-                          SvgPicture.asset('assets/icons/download.svg'),
-                        ],
+                  Link(
+                    target: LinkTarget.blank,
+                    uri: Uri.parse(
+                        'https://drive.google.com/file/d/1Ym0sd6XHDsEha1i4yIjvltPtWBshNvT9/view?usp=sharing'),
+                    builder: (context, followLink) => TextButton(
+                      onPressed: followLink,
+                      child: FittedBox(
+                        child: Row(
+                          children: [
+                            Text(
+                              'Download CV',
+                              style: Theme.of(context).textTheme.subtitle2,
+                            ),
+                            const SizedBox(
+                              width: customPadding,
+                            ),
+                            SvgPicture.asset('assets/icons/download.svg'),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: defaultPadding),
+                    padding: const EdgeInsets.only(top: customPadding),
                     child: Container(
                       color: const Color(0xFF26262E),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           const Spacer(),
-                          IconButton(
-                            splashRadius: 23,
-                            onPressed: () {},
-                            icon: SvgPicture.asset('assets/icons/linkedin.svg'),
+                          Link(
+                            target: LinkTarget.blank,
+                            uri: Uri.parse(
+                                'https://www.linkedin.com/in/kyrillosmaher/'),
+                            builder: (context, followLink) => IconButton(
+                              splashRadius: 23,
+                              onPressed: followLink,
+                              icon:
+                                  SvgPicture.asset('assets/icons/linkedin.svg'),
+                            ),
                           ),
-                          IconButton(
-                            splashRadius: 23,
-                            onPressed: () {},
-                            icon: SvgPicture.asset('assets/icons/twitter.svg'),
-                          ),
-                          IconButton(
-                            splashRadius: 23,
-                            onPressed: () {},
-                            icon: SvgPicture.asset('assets/icons/github.svg'),
+                          Link(
+                            target: LinkTarget.blank,
+                            uri: Uri.parse('https://github.com/Ikyrillos'),
+                            builder: (context, followLink2) => IconButton(
+                              splashRadius: 23,
+                              onPressed: followLink2,
+                              icon: SvgPicture.asset('assets/icons/github.svg'),
+                            ),
                           ),
                           const Spacer(),
                         ],
@@ -139,10 +151,9 @@ class Coding extends StatelessWidget {
       children: const [
         AnimatedLinearProgressIndicator(label: 'Dart', percentageValue: 0.80),
         AnimatedLinearProgressIndicator(
-            label: 'Typescript', percentageValue: 0.70),
-        AnimatedLinearProgressIndicator(label: 'Java', percentageValue: 0.60),
+            label: 'Typescript', percentageValue: 0.60),
         AnimatedLinearProgressIndicator(
-            label: 'JavaScript', percentageValue: 0.65),
+            label: 'JavaScript', percentageValue: 0.60),
         AnimatedLinearProgressIndicator(label: 'Html', percentageValue: 0.55),
         AnimatedLinearProgressIndicator(label: 'CSS', percentageValue: 0.55),
       ],

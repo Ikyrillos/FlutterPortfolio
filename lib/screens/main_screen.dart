@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:portfolio_dev/constants.dart';
 import 'package:portfolio_dev/screens/components/left-side-menu.dart';
 
@@ -14,13 +12,14 @@ class MainScreen extends StatelessWidget {
         constraints: const BoxConstraints(maxWidth: maxWidth),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Expanded(
               flex: 2,
               child: LeftSideMenu(),
             ),
             const SizedBox(
-              width: defaultPadding,
+              width: customPadding,
             ),
             Expanded(
               flex: 7,

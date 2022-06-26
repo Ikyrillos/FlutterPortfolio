@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:portfolio_dev/constants.dart';
 
@@ -11,7 +10,7 @@ class AreaInfoText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: defaultPadding / 2),
+      padding: const EdgeInsets.only(bottom: customPadding / 2),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

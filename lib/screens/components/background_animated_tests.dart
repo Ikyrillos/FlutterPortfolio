@@ -14,17 +14,17 @@ class BackgroundAnimatedTexts extends StatelessWidget {
         children: [
           const Text('I create and develop '),
           AnimatedTextKit(animatedTexts: [
-            TyperAnimatedText('Android Apps',
+            TyperAnimatedText('Windows Apps',
                 textStyle: const TextStyle(
-                  color: Colors.amber,
+                  color: Colors.blueAccent,
                 )),
             TyperAnimatedText('iOS Apps',
                 textStyle: const TextStyle(
                   color: Colors.purpleAccent,
                 )),
-            TyperAnimatedText('Windows Apps',
+            TyperAnimatedText('Android Apps',
                 textStyle: const TextStyle(
-                  color: Colors.blueAccent,
+                  color: Colors.amber,
                 )),
           ])
         ],

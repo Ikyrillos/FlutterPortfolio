@@ -16,7 +16,7 @@ class AnimatedCircularIndicator extends StatelessWidget {
           aspectRatio: 1,
           child: TweenAnimationBuilder(
             tween: Tween<double>(begin: 0, end: percentageValue),
-            duration: defaultDuration,
+            duration: customDuration,
             builder: (context, double value, child) => Stack(
               fit: StackFit.expand,
               children: [
@@ -36,7 +36,7 @@ class AnimatedCircularIndicator extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: defaultPadding / 2,
+          height: customPadding / 2,
         ),
         Text(
           label,
