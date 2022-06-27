@@ -1,12 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio_dev/constants.dart';
 import 'package:portfolio_dev/models/Project.model.dart';
 import 'package:portfolio_dev/screens/home/components/background_banner.dart';
+import 'package:portfolio_dev/screens/home/components/project_window.dart';
+import 'package:portfolio_dev/screens/home/components/show_dialogue.dart';
 import 'package:portfolio_dev/screens/main_screen.dart';
-import 'package:url_launcher/link.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -97,153 +97,3 @@ class ProjectsCustomGridView extends StatelessWidget {
   }
 }
 
-// ignore: must_be_immutable
-class ProjectWindow extends StatelessWidget {
-  ProjectWindow({Key? key, required this.project}) : super(key: key);
-  Project? project;
-  @override
-  Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1,
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              offset: const Offset(6.0, 6.0),
-              blurRadius: 16.0,
-            ),
-          ],
-          color: darkColor,
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(customPadding),
-              child: AutoSizeText(project!.title.toString(),
-                  style: Theme.of(context).textTheme.headline6),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(customPadding),
-              child: AutoSizeText(
-                project!.description.toString(),
-                style: descriptionTextStyle,
-                maxLines: 4,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-            const Spacer(),
-            // TODO: fix ProjectWindow overflow
-            Padding(
-              padding: const EdgeInsets.all(customPadding),
-              child: Row(
-                children: [
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      primary: primaryColor,
-                    ),
-                    onPressed: () {
-                      showDialogBox(context, project!);
-                    },
-                    child: const AutoSizeText('More & Source Code'),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// function to show dialogue that shows project details
-void showDialogBox(BuildContext context, Project project) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      // return object of container as a dialog
-      return Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Center(
-          child: Container(
-            width: MediaQuery.of(context).size.width / 2,
-            height: MediaQuery.of(context).size.height / 2,
-            decoration: BoxDecoration(
-              color: darkColor,
-              borderRadius: BorderRadius.circular(12.0),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(customPadding),
-                  child: AutoSizeText(
-                    project.title.toString(),
-                    style: Theme.of(context).textTheme.headline6,
-                  ),
-                ),
-                const SizedBox(height: customPadding),
-                Padding(
-                  padding: const EdgeInsets.all(customPadding),
-                  child: AutoSizeText(
-                    project.description.toString(),
-                    style: descriptionTextStyle,
-                    maxLines: 4,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                const Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/icons/github.svg',
-                      color: primaryColor,
-                      height: customPadding,
-                      width: customPadding,
-                    ),
-                    const SizedBox(width: customPadding),
-                    Link(
-                      target: LinkTarget.blank,
-                      uri: Uri.parse(project.link.toString()),
-                      builder: (context, followLink2) => TextButton(
-                        style: TextButton.styleFrom(
-                          primary: primaryColor,
-                        ),
-                        onPressed: followLink2,
-                        child: Text(
-                          project.link.toString(),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(customPadding),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          primary: primaryColor,
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text('Close'),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
-    },
-  );
-}

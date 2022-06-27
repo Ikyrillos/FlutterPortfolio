@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class AboutInfo extends StatelessWidget {
@@ -22,11 +23,11 @@ class AboutInfo extends StatelessWidget {
               backgroundImage: AssetImage('images/profilepic.jpg'),
             ),
             const Spacer(),
-            Text(
+            AutoSizeText(
               'Kyrillos Maher',
               style: Theme.of(context).textTheme.subtitle2,
             ),
-            const Text(
+            const AutoSizeText(
               'Flutter Developer and Backend-Developer',
               style: TextStyle(
                 fontWeight: FontWeight.w200,
