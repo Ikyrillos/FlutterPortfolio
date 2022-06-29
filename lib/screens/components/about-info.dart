@@ -30,6 +30,7 @@ class AboutInfo extends StatelessWidget {
             const AutoSizeText(
               'Flutter Developer and Backend-Developer',
               style: TextStyle(
+                fontSize: 14,
                 fontWeight: FontWeight.w200,
                 height: 1.5,
                 overflow: TextOverflow.ellipsis,

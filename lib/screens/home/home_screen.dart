@@ -1,15 +1,15 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_dev/constants.dart';
 import 'package:portfolio_dev/models/Project.model.dart';
 import 'package:portfolio_dev/screens/home/components/background_banner.dart';
 import 'package:portfolio_dev/screens/home/components/project_window.dart';
-import 'package:portfolio_dev/screens/home/components/show_dialogue.dart';
+import 'package:portfolio_dev/screens/home/theme.dart';
 import 'package:portfolio_dev/screens/main_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
   // get project list from firestore
   Stream<List<Project>> getProjectList() => FirebaseFirestore.instance
           .collection('projects')
@@ -19,6 +19,7 @@ class HomeScreen extends StatelessWidget {
           return Project.fromJson(doc.data());
         }).toList();
       });
+
   @override
   Widget build(BuildContext context) {
     return MainScreen(
@@ -46,9 +47,13 @@ class HomeScreen extends StatelessWidget {
                     AsyncSnapshot<List<Project>> snapshot) {
                   if (snapshot.hasData) {
                     final projects = snapshot.data;
-                    return ProjectsCustomGridView(
-                      projects: projects,
-                    );
+                    return currentWidth(context) < 1128
+                        ? CustomListViewBuilder(
+                            input: projects,
+                          )
+                        : ProjectsCustomGridView(
+                            projects: projects,
+                          );
                   } else {
                     return const Center(
                       child: CircularProgressIndicator(
@@ -59,6 +64,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
             ),
+            Text('${MediaQuery.of(context).size.width}'),
           ],
         )
       ],
@@ -80,20 +86,49 @@ class ProjectsCustomGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: projects!.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: crossAxisCount,
-        childAspectRatio: childAspectRatio,
-        crossAxisSpacing: customPadding,
-        mainAxisSpacing: customPadding,
-      ),
-      itemBuilder: (context, index) => ProjectWindow(
-        project: projects![index],
+    return AspectRatio(
+      aspectRatio: childAspectRatio,
+      child: GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: projects!.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: crossAxisCount,
+          childAspectRatio: childAspectRatio,
+          crossAxisSpacing: customPadding,
+          mainAxisSpacing: customPadding,
+        ),
+        itemBuilder: (context, index) => ProjectWindow(
+          project: projects![index],
+        ),
       ),
     );
   }
 }
 
+// todo fix responsiveness of the portfolio that is not responsive on mobile and grid view on desktop and drawer on mobile
+class CustomListViewBuilder extends StatefulWidget {
+  CustomListViewBuilder({Key? key, this.input}) : super(key: key) {
+    _project = input;
+  }
+  List<Project>? input;
+  static List<Project>? _project;
+  @override
+  State<CustomListViewBuilder> createState() => _CustomListViewBuilderState();
+  static get project => _project;
+}
+
+class _CustomListViewBuilderState extends State<CustomListViewBuilder> {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: CustomListViewBuilder.project.length,
+      itemBuilder: (context, index) => ListTile(
+        title: ListTile(
+          title: projectListTile(context, CustomListViewBuilder.project[index]),
+        ),
+      ),
+    );
+  }
+}

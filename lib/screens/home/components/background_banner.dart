@@ -1,6 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_dev/constants.dart';
 import 'package:portfolio_dev/screens/components/background_animated_tests.dart';
+import 'package:portfolio_dev/screens/home/theme.dart';
 
 class BackgroundBanner extends StatelessWidget {
   const BackgroundBanner({
@@ -17,6 +19,9 @@ class BackgroundBanner extends StatelessWidget {
           Image.asset(
             'assets/images/rwp.jpeg',
             fit: BoxFit.cover,
+            height: currentWidth(context) < 610
+                ? MediaQuery.of(context).size.height / 3
+                : null,
           ),
           Container(
             color: darkColor.withOpacity(0.66),
@@ -27,7 +32,7 @@ class BackgroundBanner extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                AutoSizeText(
                   'Things don\'t turn up in this world\n until somebody turns them up.',
                   style: Theme.of(context)
                       .textTheme
@@ -43,7 +48,7 @@ class BackgroundBanner extends StatelessWidget {
                       primary: primaryColor,
                     ),
                     onPressed: () {},
-                    child: const Text(
+                    child: const AutoSizeText(
                       'Explore now',
                       style: TextStyle(
                         color: darkColor,
