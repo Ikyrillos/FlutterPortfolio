@@ -1,5 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio_dev/constants.dart';
+import 'package:kyrillos/constants.dart';
 
 class AnimatedCircularIndicator extends StatelessWidget {
   const AnimatedCircularIndicator(
@@ -26,7 +27,7 @@ class AnimatedCircularIndicator extends StatelessWidget {
                   backgroundColor: darkColor,
                 ),
                 Center(
-                  child: Text(
+                  child: AutoSizeText(
                     '${(value * 100).toInt()}%',
                     style: Theme.of(context).textTheme.subtitle1,
                   ),

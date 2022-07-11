@@ -20,7 +20,7 @@ class AboutInfo extends StatelessWidget {
             ),
             const CircleAvatar(
               radius: 65,
-              backgroundImage: AssetImage('images/profilepic.jpg'),
+              backgroundImage: AssetImage('assets/images/profilepic.jpg'),
             ),
             const Spacer(),
             AutoSizeText(

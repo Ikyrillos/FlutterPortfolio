@@ -2,8 +2,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:portfolio_dev/constants.dart';
-import 'package:portfolio_dev/models/Project.model.dart';
+import 'package:kyrillos/constants.dart';
+import 'package:kyrillos/models/Project.model.dart';
 import 'package:url_launcher/link.dart';
 
 void showDialogBox(BuildContext context, Project project) {
@@ -61,8 +61,9 @@ void showDialogBox(BuildContext context, Project project) {
                           primary: primaryColor,
                         ),
                         onPressed: followLink2,
-                        child: Text(
-                          project.link.toString(),
+                        child: const AutoSizeText(
+                          'Project repo',
+                          maxLines: 2,
                         ),
                       ),
                     ),

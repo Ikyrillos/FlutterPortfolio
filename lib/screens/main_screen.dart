@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_dev/constants.dart';
-import 'package:portfolio_dev/screens/components/left-side-menu.dart';
-import 'package:portfolio_dev/screens/home/theme.dart';
+import 'package:kyrillos/constants.dart';
+import 'package:kyrillos/screens/components/left-side-menu.dart';
+import 'package:kyrillos/screens/home/theme.dart';
+
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key, required this.children}) : super(key: key);
@@ -9,20 +10,12 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: currentWidth(context) < 1128
-          ? AppBar(
-              title: const Text('Portfolio'),
-              centerTitle: true,
-              backgroundColor: primaryColor,
-              leading: IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () {},
-              ),
-            )
-          : null,
-      drawer: const Drawer(
-        child: LeftSideMenu(),
-      ),
+      appBar: currentWidth(context) < 1128 ? AppBar(
+        title: const Text('Portfolio'),
+        centerTitle: true,
+      )
+       : null,
+      drawer: const NavigationDrawer(),
       body: Container(
         constraints: const BoxConstraints(maxWidth: maxWidth),
         child: Row(
@@ -41,8 +34,8 @@ class MainScreen extends StatelessWidget {
             Expanded(
               flex: 7,
               child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: ListView(
+                  shrinkWrap: true,
                   children: [
                     ...children,
                   ],
@@ -53,5 +46,18 @@ class MainScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class NavigationDrawer extends StatelessWidget {
+  const NavigationDrawer({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return currentWidth(context) < 1128
+        ? const Drawer(
+            child: LeftSideMenu(),
+          )
+        : const SizedBox();
   }
 }

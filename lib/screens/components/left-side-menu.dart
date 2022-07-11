@@ -1,14 +1,13 @@
-import 'package:url_launcher/link.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:portfolio_dev/constants.dart';
-import 'package:portfolio_dev/screens/components/about-info.dart';
-import 'package:portfolio_dev/screens/components/animated-circular-indicator.dart';
-import 'package:portfolio_dev/screens/components/animated_linear_circular.dart';
-import 'package:portfolio_dev/screens/home/components/area-info-text.dart';
-import 'package:portfolio_dev/screens/components/knowledge_text.dart';
-import 'package:portfolio_dev/screens/components/section_title.dart';
+import 'package:kyrillos/constants.dart';
+import 'package:kyrillos/screens/components/about-info.dart';
+import 'package:kyrillos/screens/components/animated-circular-indicator.dart';
+import 'package:kyrillos/screens/components/animated_linear_circular.dart';
+import 'package:kyrillos/screens/components/knowledge_text.dart';
+import 'package:kyrillos/screens/components/section_title.dart';
+import 'package:kyrillos/screens/home/components/area-info-text.dart';
+import 'package:url_launcher/link.dart';
 
 class LeftSideMenu extends StatelessWidget {
   const LeftSideMenu({
@@ -20,7 +19,7 @@ class LeftSideMenu extends StatelessWidget {
     return Drawer(
       child: Column(
         children: [
-          const AboutInfo(),
+          AboutInfo(),
           Expanded(
             child: SingleChildScrollView(
               controller: ScrollController(),
@@ -45,8 +44,8 @@ class LeftSideMenu extends StatelessWidget {
                       ),
                       Expanded(
                         child: AnimatedCircularIndicator(
-                          percentageValue: 0.60,
-                          label: 'NodeJS',
+                          percentageValue: 0.75,
+                          label: 'Dart',
                         ),
                       ),
                       SizedBox(
@@ -54,8 +53,8 @@ class LeftSideMenu extends StatelessWidget {
                       ),
                       Expanded(
                         child: AnimatedCircularIndicator(
-                          percentageValue: 0.40,
-                          label: 'Angular',
+                          percentageValue: 0.60,
+                          label: 'NodeJS',
                         ),
                       ),
                     ],
@@ -72,9 +71,9 @@ class LeftSideMenu extends StatelessWidget {
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
                   ),
-                  const KnowledgeText(text: 'Flutter, Dart, Firebase, Bloc'),
+                  const KnowledgeText(text: 'Flutter, Dart, OOP, Bloc'),
                   const KnowledgeText(text: 'NodeJS, PostgreSQL, Express'),
-                  const KnowledgeText(text: 'Angular, TypeScript, Git'),
+                  const KnowledgeText(text: 'Firebase, TypeScript, Git'),
                   const Divider(),
                   Link(
                     target: LinkTarget.blank,

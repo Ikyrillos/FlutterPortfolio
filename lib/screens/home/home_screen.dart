@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio_dev/constants.dart';
-import 'package:portfolio_dev/models/Project.model.dart';
-import 'package:portfolio_dev/screens/home/components/background_banner.dart';
-import 'package:portfolio_dev/screens/home/components/project_window.dart';
-import 'package:portfolio_dev/screens/home/theme.dart';
-import 'package:portfolio_dev/screens/main_screen.dart';
+import 'package:kyrillos/constants.dart';
+import 'package:kyrillos/models/Project.model.dart';
+import 'package:kyrillos/screens/home/components/background_banner.dart';
+import 'package:kyrillos/screens/home/components/project_window.dart';
+import 'package:kyrillos/screens/home/theme.dart';
+import 'package:kyrillos/screens/main_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MainScreen(
       children: [
-        const BackgroundBanner(),
+        BackgroundBanner(),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
                     AsyncSnapshot<List<Project>> snapshot) {
                   if (snapshot.hasData) {
                     final projects = snapshot.data;
-                    return currentWidth(context) < 1128
+                    return currentWidth(context) < 1130
                         ? CustomListViewBuilder(
                             input: projects,
                           )
@@ -64,7 +64,6 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
             ),
-            Text('${MediaQuery.of(context).size.width}'),
           ],
         )
       ],
@@ -126,8 +125,8 @@ class _CustomListViewBuilderState extends State<CustomListViewBuilder> {
       itemCount: CustomListViewBuilder.project.length,
       itemBuilder: (context, index) => ListTile(
         title: ListTile(
-          title: projectListTile(context, CustomListViewBuilder.project[index]),
-        ),
+            title:
+                ProjectListTile(project: CustomListViewBuilder.project[index])),
       ),
     );
   }

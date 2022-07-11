@@ -1,14 +1,16 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio_dev/constants.dart';
-import 'package:portfolio_dev/screens/components/background_animated_tests.dart';
-import 'package:portfolio_dev/screens/home/theme.dart';
+import 'package:kyrillos/constants.dart';
+import 'package:kyrillos/screens/components/background_animated_tests.dart';
+import 'package:kyrillos/screens/home/theme.dart';
+
+
 
 class BackgroundBanner extends StatelessWidget {
-  const BackgroundBanner({
+  BackgroundBanner({
     Key? key,
   }) : super(key: key);
-
+  bool isDesktop = false;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -27,33 +29,27 @@ class BackgroundBanner extends StatelessWidget {
             color: darkColor.withOpacity(0.66),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: customPadding),
+            padding: const EdgeInsets.all(customPadding),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AutoSizeText(
                   'Things don\'t turn up in this world\n until somebody turns them up.',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline4!
-                      .copyWith(color: Colors.white),
+                  style: MediaQuery.of(context).size.width > 800
+                      ? Theme.of(context)
+                          .textTheme
+                          .headline4!
+                          .copyWith(color: Colors.white)
+                      : Theme.of(context)
+                          .textTheme
+                          .headlineSmall!
+                          .copyWith(color: Colors.white),
                 ),
                 const BackgroundAnimatedTexts(),
                 const SizedBox(
                   height: customPadding,
                 ),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: primaryColor,
-                    ),
-                    onPressed: () {},
-                    child: const AutoSizeText(
-                      'Explore now',
-                      style: TextStyle(
-                        color: darkColor,
-                      ),
-                    ))
               ],
             ),
           )
