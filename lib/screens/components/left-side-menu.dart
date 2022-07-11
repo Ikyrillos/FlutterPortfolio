@@ -148,13 +148,14 @@ class Coding extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
-        AnimatedLinearProgressIndicator(label: 'Dart', percentageValue: 0.80),
+        AnimatedLinearProgressIndicator(label: 'APIs', percentageValue: 0.80),
         AnimatedLinearProgressIndicator(
             label: 'Typescript', percentageValue: 0.60),
+        AnimatedLinearProgressIndicator(label: 'Firebase', percentageValue: 0.70),
+        AnimatedLinearProgressIndicator(label: 'Git', percentageValue: 0.65),
         AnimatedLinearProgressIndicator(
-            label: 'JavaScript', percentageValue: 0.60),
-        AnimatedLinearProgressIndicator(label: 'Html', percentageValue: 0.55),
-        AnimatedLinearProgressIndicator(label: 'CSS', percentageValue: 0.55),
+            label: 'JavaScript, Html, CSS ', percentageValue: 0.60),
+
       ],
     );
   }

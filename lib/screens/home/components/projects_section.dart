@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:kyrillos/constants.dart';
 import 'package:kyrillos/models/Project.model.dart';
@@ -19,6 +20,7 @@ class ProjectsCustomGridView extends StatelessWidget {
     return AspectRatio(
       aspectRatio: childAspectRatio,
       child: GridView.builder(
+
         shrinkWrap: true,
         itemCount: projects!.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -49,10 +51,14 @@ class CustomListViewBuilder extends StatefulWidget {
 }
 
 class _CustomListViewBuilderState extends State<CustomListViewBuilder> {
+  final ScrollController controller = ScrollController();
+
   @override
   Widget build(BuildContext context) {
-    return Scrollbar(
+    return ScrollConfiguration(
+      behavior: MyCustomScrollBehavior(),
       child: ListView.builder(
+        controller: controller,
         shrinkWrap: true,
         itemCount: CustomListViewBuilder.project.length,
         itemBuilder: (context, index) => ListTile(
@@ -63,4 +69,14 @@ class _CustomListViewBuilderState extends State<CustomListViewBuilder> {
       ),
     );
   }
+}
+
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  // Override behavior methods and getters like dragDevices
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+    // etc.
+  };
 }

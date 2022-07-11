@@ -121,24 +121,6 @@ Widget projectListTile(BuildContext context, Project? project) {
     ),
   );
 }
-// Positioned(
-//                 bottom: 0,
-//                 right: 0,
-//                 child: TextButton(
-//                   style: TextButton.styleFrom(primary: primaryColor),
-//                   onPressed: () {
-//                     showDialogBox(context, project!);
-//                   },
-//                   child: const AutoSizeText(
-//                     'More & Source code',
-//                     style: TextStyle(
-//                       color: primaryColor,
-//                       fontSize: 16.0,
-//                       fontWeight: FontWeight.bold,
-//                     ),
-//                   ),
-//                 ),
-//               ),
 
 class ProjectListTile extends StatefulWidget {
   ProjectListTile({Key? key, required this.project}) : super(key: key);
@@ -201,3 +183,4 @@ class _ProjectListTileState extends State<ProjectListTile> {
     );
   }
 }
+
