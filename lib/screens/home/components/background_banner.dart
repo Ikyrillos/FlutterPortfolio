@@ -4,8 +4,6 @@ import 'package:kyrillos/constants.dart';
 import 'package:kyrillos/screens/components/background_animated_tests.dart';
 import 'package:kyrillos/screens/home/theme.dart';
 
-
-
 class BackgroundBanner extends StatelessWidget {
   BackgroundBanner({
     Key? key,
@@ -14,7 +12,7 @@ class BackgroundBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 3,
+      aspectRatio: 3 / 1,
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -22,37 +20,37 @@ class BackgroundBanner extends StatelessWidget {
             'assets/images/rwp.jpeg',
             fit: BoxFit.cover,
             height: currentWidth(context) < 610
-                ? MediaQuery.of(context).size.height / 3
+                ? MediaQuery.of(context).size.height / 2.5
                 : null,
           ),
           Container(
             color: darkColor.withOpacity(0.66),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(customPadding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AutoSizeText(
-                  'Things don\'t turn up in this world\n until somebody turns them up.',
-                  style: MediaQuery.of(context).size.width > 800
-                      ? Theme.of(context)
-                          .textTheme
-                          .headline4!
-                          .copyWith(color: Colors.white)
-                      : Theme.of(context)
-                          .textTheme
-                          .headlineSmall!
-                          .copyWith(color: Colors.white),
-                ),
-                const BackgroundAnimatedTexts(),
-                const SizedBox(
-                  height: customPadding,
-                ),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(customPadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AutoSizeText(
+                    'Things don\'t turn up in this world\n until somebody turns them up.',
+                    style: MediaQuery.of(context).size.width > 800
+                        ? Theme.of(context)
+                            .textTheme
+                            .headline4!
+                            .copyWith(color: Colors.white)
+                        : Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .copyWith(color: Colors.white),
+                  ),
+                  const BackgroundAnimatedTexts(),
+                  const SizedBox(
+                    height: customPadding,
+                  ),
+                ],
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

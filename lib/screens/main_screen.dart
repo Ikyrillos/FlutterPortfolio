@@ -3,18 +3,18 @@ import 'package:kyrillos/constants.dart';
 import 'package:kyrillos/screens/components/left-side-menu.dart';
 import 'package:kyrillos/screens/home/theme.dart';
 
-
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key, required this.children}) : super(key: key);
   final List<Widget> children;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: currentWidth(context) < 1128 ? AppBar(
-        title: const Text('Portfolio'),
-        centerTitle: true,
-      )
-       : null,
+      appBar: currentWidth(context) < 1128
+          ? AppBar(
+              title: const Text('Portfolio'),
+              centerTitle: true,
+            )
+          : null,
       drawer: const NavigationDrawer(),
       body: Container(
         constraints: const BoxConstraints(maxWidth: maxWidth),
@@ -33,13 +33,11 @@ class MainScreen extends StatelessWidget {
             ),
             Expanded(
               flex: 7,
-              child: SingleChildScrollView(
-                child: ListView(
-                  shrinkWrap: true,
-                  children: [
-                    ...children,
-                  ],
-                ),
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  ...children,
+                ],
               ),
             ),
           ],

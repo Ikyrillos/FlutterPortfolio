@@ -5,7 +5,6 @@ import 'package:kyrillos/constants.dart';
 import 'package:kyrillos/models/Project.model.dart';
 import 'package:kyrillos/screens/home/components/show_dialogue.dart';
 
-
 // ignore: must_be_immutable
 class ProjectWindow extends StatefulWidget {
   ProjectWindow({Key? key, required this.project}) : super(key: key);
@@ -187,8 +186,12 @@ class _ProjectListTileState extends State<ProjectListTile> {
               color: primaryColor,
             ),
             title: Text(widget.project!.title.toString()),
-            subtitle: Text(widget.project!.description.toString(),
-                style: descriptionTextStyle),
+            subtitle: Text(
+              widget.project!.description.toString(),
+              style: descriptionTextStyle,
+              maxLines: 4,
+              overflow: TextOverflow.ellipsis,
+            ),
             onTap: () {
               showDialogBox(context, widget.project!);
             },
