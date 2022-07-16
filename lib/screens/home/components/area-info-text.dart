@@ -1,7 +1,10 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:kyrillos/constants.dart';
 
 
+// ignore: must_be_immutable
 class AreaInfoText extends StatelessWidget {
   String label;
   String text;

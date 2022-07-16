@@ -4,6 +4,7 @@ import 'package:kyrillos/constants.dart';
 import 'package:kyrillos/screens/components/background_animated_tests.dart';
 import 'package:kyrillos/screens/home/theme.dart';
 
+// ignore: must_be_immutable
 class BackgroundBanner extends StatelessWidget {
   BackgroundBanner({
     Key? key,

@@ -1,5 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kyrillos/constants.dart';
 
 class KnowledgeText extends StatelessWidget {
@@ -10,16 +12,24 @@ class KnowledgeText extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: 20,
+          width: 20.h,
           child:
               SvgPicture.asset('assets/icons/check.svg', fit: BoxFit.contain),
         ),
         const SizedBox(
           width: customPadding / 2,
         ),
-        Text(
+        AutoSizeText(
           text,
-          style: Theme.of(context).textTheme.subtitle2,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: ScreenUtil().setSp(11),
+            fontWeight: FontWeight.bold,
+            height: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          maxLines: 1,
+          overflow: TextOverflow.visible,
         ),
       ],
     );

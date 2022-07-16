@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kyrillos/constants.dart';
 import 'package:kyrillos/models/Project.model.dart';
 import 'package:kyrillos/screens/home/components/show_dialogue.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // ignore: must_be_immutable
 class ProjectWindow extends StatefulWidget {
@@ -31,8 +32,8 @@ class _ProjectWindowState extends State<ProjectWindow> {
           showDialogBox(context, widget.project!);
         },
         child: Container(
-          width: MediaQuery.of(context).size.width * 0.8,
-          height: MediaQuery.of(context).size.height * 5,
+          width: 300.w,
+          height: 300.h,
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
@@ -51,7 +52,7 @@ class _ProjectWindowState extends State<ProjectWindow> {
               Padding(
                 padding: const EdgeInsets.all(customPadding),
                 child: AutoSizeText(widget.project!.title.toString(),
-                    style: Theme.of(context).textTheme.headline6),
+                    style: Theme.of(context).textTheme.labelLarge),
               ),
               Padding(
                 padding: const EdgeInsets.all(customPadding),
@@ -70,35 +71,38 @@ class _ProjectWindowState extends State<ProjectWindow> {
   }
 }
 
-Widget projectListView(List<Project> projects) {
-  return ListView.builder(
-    itemCount: projects.length,
-    itemBuilder: (context, index) {
-      return projectListTile(context, projects[index]);
-    },
-  );
+// ignore: must_be_immutable
+class ProjectListTile extends StatefulWidget {
+  ProjectListTile({Key? key, required this.project}) : super(key: key);
+  Project? project;
+
+  @override
+  State<ProjectListTile> createState() => _ProjectListTileState();
 }
 
-Widget projectListTile(BuildContext context, Project? project) {
+class _ProjectListTileState extends State<ProjectListTile> {
   var isHover = false;
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 10.0),
-    child: InkWell(
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
       onHover: (val) {
-        isHover = val;
+        setState(() {
+          isHover = val;
+        });
       },
       child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: customPadding),
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
               color: isHover
                   ? primaryColor.withOpacity(0.1)
                   : Colors.black.withOpacity(0.2),
-              offset: const Offset(6.0, 6.0),
-              blurRadius: 16.0,
+              offset: const Offset(0.0, 0.0),
+              blurRadius: 10.0,
             ),
           ],
-          color: darkColor,
+          // color: darkColor,
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: ListTile(
@@ -110,77 +114,20 @@ Widget projectListTile(BuildContext context, Project? project) {
             Icons.work,
             color: primaryColor,
           ),
-          title: Text(project!.title.toString()),
-          subtitle:
-              Text(project.description.toString(), style: descriptionTextStyle),
+          title: Text(widget.project!.title.toString()),
+          subtitle: Text(
+            widget.project!.description.toString(),
+            style: descriptionTextStyle,
+            maxLines: 4,
+            overflow: TextOverflow.ellipsis,
+          ),
           onTap: () {
-            showDialogBox(context, project);
+            MediaQuery.of(context).size.width <= 500
+                ? showMobileDialogBox(context, widget.project!)
+                : showDialogBox(context, widget.project!);
           },
-        ),
-      ),
-    ),
-  );
-}
-
-class ProjectListTile extends StatefulWidget {
-  ProjectListTile({Key? key, required this.project}) : super(key: key);
-  Project? project;
-
-  @override
-  State<ProjectListTile> createState() => _ProjectListTileState();
-}
-
-class _ProjectListTileState extends State<ProjectListTile> {
-  var isHover = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
-      child: InkWell(
-        onHover: (val) {
-          setState(() {
-            isHover = val;
-          });
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: primaryColor.withOpacity(0.1),
-                // isHover
-                //     ? primaryColor.withOpacity(0.1)
-                //     : Colors.black.withOpacity(0.2),
-                // offset: const Offset(6.0, 6.0),
-                // blurRadius: 16.0,
-              ),
-            ],
-            color: darkColor,
-            borderRadius: BorderRadius.circular(12.0),
-          ),
-          child: ListTile(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.0),
-            ),
-            contentPadding: const EdgeInsets.all(customPadding),
-            leading: const Icon(
-              Icons.work,
-              color: primaryColor,
-            ),
-            title: Text(widget.project!.title.toString()),
-            subtitle: Text(
-              widget.project!.description.toString(),
-              style: descriptionTextStyle,
-              maxLines: 4,
-              overflow: TextOverflow.ellipsis,
-            ),
-            onTap: () {
-              showDialogBox(context, widget.project!);
-            },
-          ),
         ),
       ),
     );
   }
 }
-
