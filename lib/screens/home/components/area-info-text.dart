@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:kyrillos/constants.dart';
 
-
 // ignore: must_be_immutable
 class AreaInfoText extends StatelessWidget {
   String label;
@@ -21,11 +20,15 @@ class AreaInfoText extends StatelessWidget {
           Text(
             label,
             style: const TextStyle(
-              color: Colors.white,
+              color: bodyTextColor,
             ),
           ),
           Text(
             text,
+            style: const TextStyle(
+              color: bodyTextColor,
+              fontWeight: FontWeight.w600,
+            ),
           )
         ],
       ),

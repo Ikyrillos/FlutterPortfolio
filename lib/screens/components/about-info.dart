@@ -2,6 +2,9 @@
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kyrillos/constants.dart';
+import 'package:url_launcher/link.dart';
 
 class AboutInfo extends StatelessWidget {
   const AboutInfo({
@@ -13,7 +16,7 @@ class AboutInfo extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 1.23,
       child: Container(
-        color: const Color(0xff242430),
+        color: darkColor.withOpacity(0.5),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -27,13 +30,19 @@ class AboutInfo extends StatelessWidget {
             const Spacer(),
             AutoSizeText(
               'Kyrillos Maher',
-              style: Theme.of(context).textTheme.titleSmall,
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    color: bodyTextColor,
+                    fontWeight: FontWeight.w600,
+                    height: 1.5,
+                    overflow: TextOverflow.ellipsis,
+                  ),
             ),
             const AutoSizeText(
               'Flutter Developer and Instructor',
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w200,
+                color: bodyTextColor,
                 height: 1.5,
                 overflow: TextOverflow.ellipsis,
               ),

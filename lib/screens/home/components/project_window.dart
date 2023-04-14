@@ -1,4 +1,6 @@
 // ignore: must_be_immutable
+import 'dart:developer';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:kyrillos/constants.dart';
@@ -33,7 +35,7 @@ class _ProjectWindowState extends State<ProjectWindow> {
           showDialogBox(context, widget.project!);
         },
         child: Container(
-          width: 300.w,
+          width: MediaQuery.of(context).size.width,
           height: 300.h,
           decoration: BoxDecoration(
             boxShadow: [
@@ -58,7 +60,7 @@ class _ProjectWindowState extends State<ProjectWindow> {
                   padding: const EdgeInsets.all(4.0),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: primaryColor.withOpacity(0.5),
+                    color: primaryColor.withOpacity(0.75),
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: AutoSizeText(widget.project!.title.toString(),
@@ -74,6 +76,21 @@ class _ProjectWindowState extends State<ProjectWindow> {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
+              const Spacer(),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  fixedSize: Size(100.w, 20.h),
+                  backgroundColor: primaryColor.withOpacity(0.5),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(radius),
+                  ),
+                ),
+                onPressed: () {
+                  showDialogBox(context, widget.project!);
+                },
+                child: const Text('View'),
+              ),
+              16.vSizedBox(),
             ],
           ),
         ),
@@ -95,50 +112,95 @@ class _ProjectListTileState extends State<ProjectListTile> {
   var isHover = false;
   @override
   Widget build(BuildContext context) {
+    log(MediaQuery.of(context).size.width.toString());
     return InkWell(
       onHover: (val) {
         setState(() {
           isHover = val;
         });
       },
+      onTap: () {
+        showMobileDialogBox(context, widget.project!);
+      },
+      overlayColor: MaterialStateProperty.all(Colors.transparent),
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: customPadding),
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: isHover
-                  ? primaryColor.withOpacity(0.1)
-                  : Colors.black.withOpacity(0.2),
-              offset: const Offset(0.0, 0.0),
-              blurRadius: 10.0,
-            ),
-          ],
-          // color: darkColor,
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-        child: ListTile(
-          shape: RoundedRectangleBorder(
+          constraints: BoxConstraints(
+              minHeight: 250.0, minWidth: MediaQuery.of(context).size.width),
+          margin: EdgeInsets.only(
+              bottom: 26.0.w, right: customPadding, left: customPadding),
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: isHover
+                    ? primaryColor.withOpacity(0.1)
+                    : Colors.black.withOpacity(0.2),
+                offset: const Offset(0.0, 0.0),
+                blurRadius: 10.0,
+              ),
+            ],
+            // color: darkColor,
             borderRadius: BorderRadius.circular(12.0),
           ),
-          contentPadding: const EdgeInsets.all(customPadding),
-          leading: const Icon(
-            Icons.work,
-            color: primaryColor,
-          ),
-          title: Text(widget.project!.title.toString()),
-          subtitle: Text(
-            widget.project!.description.toString(),
-            style: descriptionTextStyle,
-            maxLines: 4,
-            overflow: TextOverflow.ellipsis,
-          ),
-          onTap: () {
-            MediaQuery.of(context).size.width <= 500
-                ? showMobileDialogBox(context, widget.project!)
-                : showDialogBox(context, widget.project!);
-          },
-        ),
-      ),
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: 250.h,
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: isHover
+                      ? primaryColor.withOpacity(0.1)
+                      : Colors.black.withOpacity(0.2),
+                  offset: const Offset(0.0, 0.0),
+                  blurRadius: 16.0,
+                ),
+              ],
+              color: darkColor,
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+            child: Column(
+              children: [
+                2.vSizedBox(),
+                Padding(
+                  padding: const EdgeInsets.all(customPadding),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.all(4.0),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: primaryColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    child: AutoSizeText(widget.project!.title.toString(),
+                        style: Theme.of(context).textTheme.labelLarge),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(customPadding),
+                  child: AutoSizeText(
+                    widget.project!.description.toString(),
+                    style: descriptionTextStyle,
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                const Spacer(),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    fixedSize: Size(300.w, 35.h),
+                    backgroundColor: primaryColor.withOpacity(0.5),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(radius),
+                    ),
+                  ),
+                  onPressed: () {
+                    showMobileDialogBox(context, widget.project!);
+                  },
+                  child: const Text('View'),
+                ),
+                16.vSizedBox(),
+              ],
+            ),
+          )),
     );
   }
 }

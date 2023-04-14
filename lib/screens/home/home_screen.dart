@@ -39,7 +39,6 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: customPadding),
             Padding(
               padding: const EdgeInsets.only(
-                left: customPadding,
                 right: customPadding,
               ),
               child: StreamBuilder(

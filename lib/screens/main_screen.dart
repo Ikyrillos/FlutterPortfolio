@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kyrillos/constants.dart';
+import 'package:kyrillos/core/extenstions/sized_box_extension/sized_box_.dart';
 import 'package:kyrillos/screens/components/left-side-menu.dart';
 import 'package:kyrillos/screens/home/theme.dart';
 
@@ -29,9 +30,11 @@ class MainScreen extends StatelessWidget {
                     flex: 2,
                     child: LeftSideMenu(),
                   ),
-            const SizedBox(
-              width: customPadding,
-            ),
+            if (currentWidth(context) > 510)
+              const SizedBox(
+                width: customPadding,
+              ),
+            if (currentWidth(context) < 1128) 5.hSizedBox(),
             Expanded(
               flex: 7,
               child: ListView(

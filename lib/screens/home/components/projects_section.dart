@@ -73,14 +73,15 @@ class _CustomListViewBuilderState extends State<CustomListViewBuilder> {
   Widget build(BuildContext context) {
     return ScrollConfiguration(
       behavior: MyCustomScrollBehavior(),
-      child: ListView.builder(
+      child: ListView.separated(
+        separatorBuilder: (context, index) => const SizedBox(
+          height: 4,
+        ),
         controller: controller,
         shrinkWrap: true,
         itemCount: CustomListViewBuilder.project.length,
         itemBuilder: (context, index) => ListTile(
-          title: ListTile(
-              title: ProjectListTile(
-                  project: CustomListViewBuilder.project[index])),
+          title: ProjectListTile(project: CustomListViewBuilder.project[index]),
         ),
       ),
     );

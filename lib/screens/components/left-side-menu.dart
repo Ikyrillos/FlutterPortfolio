@@ -35,6 +35,62 @@ class LeftSideMenu extends StatelessWidget {
                     AreaInfoText(label: 'City:', text: 'Cairo'),
                     AreaInfoText(
                         label: 'Age', text: '${DateTime.now().year - 1999}'),
+                    Link(
+                      target: LinkTarget.blank,
+                      uri: Uri.parse(
+                          'https://drive.google.com/file/d/1iXT1udGVY1-rT2l1HmtRDpolS-P25EUQ/view?usp=share_link'),
+                      builder: (context, followLink) => TextButton(
+                        onPressed: followLink,
+                        child: FittedBox(
+                          child: Row(
+                            children: [
+                              Text(
+                                'Download CV',
+                                style: Theme.of(context).textTheme.subtitle2,
+                              ),
+                              const SizedBox(
+                                width: customPadding,
+                              ),
+                              SvgPicture.asset('assets/icons/download.svg'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: customPadding),
+                      child: Container(
+                        color: secondaryColor,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            const Spacer(),
+                            Link(
+                              target: LinkTarget.blank,
+                              uri: Uri.parse(
+                                  'https://www.linkedin.com/in/kyrillosmaher/'),
+                              builder: (context, followLink) => IconButton(
+                                splashRadius: 23,
+                                onPressed: followLink,
+                                icon: SvgPicture.asset(
+                                    'assets/icons/linkedin.svg'),
+                              ),
+                            ),
+                            Link(
+                              target: LinkTarget.blank,
+                              uri: Uri.parse('https://github.com/Ikyrillos'),
+                              builder: (context, followLink2) => IconButton(
+                                splashRadius: 23,
+                                onPressed: followLink2,
+                                icon:
+                                    SvgPicture.asset('assets/icons/github.svg'),
+                              ),
+                            ),
+                            const Spacer(),
+                          ],
+                        ),
+                      ),
+                    ),
                     const Divider(),
                     const SectionTitle(label: 'Skills'),
                     Row(
@@ -82,62 +138,6 @@ class LeftSideMenu extends StatelessWidget {
                     const KnowledgeText(text: 'NodeJS, Express'),
                     const KnowledgeText(text: 'Firebase, TypeScript, Git'),
                     const Divider(),
-                    Link(
-                      target: LinkTarget.blank,
-                      uri: Uri.parse(
-                          'https://drive.google.com/file/d/1iXT1udGVY1-rT2l1HmtRDpolS-P25EUQ/view?usp=share_link'),
-                      builder: (context, followLink) => TextButton(
-                        onPressed: followLink,
-                        child: FittedBox(
-                          child: Row(
-                            children: [
-                              Text(
-                                'Download CV',
-                                style: Theme.of(context).textTheme.subtitle2,
-                              ),
-                              const SizedBox(
-                                width: customPadding,
-                              ),
-                              SvgPicture.asset('assets/icons/download.svg'),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: customPadding),
-                      child: Container(
-                        color: const Color(0xFF26262E),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            const Spacer(),
-                            Link(
-                              target: LinkTarget.blank,
-                              uri: Uri.parse(
-                                  'https://www.linkedin.com/in/kyrillosmaher/'),
-                              builder: (context, followLink) => IconButton(
-                                splashRadius: 23,
-                                onPressed: followLink,
-                                icon: SvgPicture.asset(
-                                    'assets/icons/linkedin.svg'),
-                              ),
-                            ),
-                            Link(
-                              target: LinkTarget.blank,
-                              uri: Uri.parse('https://github.com/Ikyrillos'),
-                              builder: (context, followLink2) => IconButton(
-                                splashRadius: 23,
-                                onPressed: followLink2,
-                                icon:
-                                    SvgPicture.asset('assets/icons/github.svg'),
-                              ),
-                            ),
-                            const Spacer(),
-                          ],
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),
