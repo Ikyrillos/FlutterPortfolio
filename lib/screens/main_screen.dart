@@ -17,7 +17,8 @@ class MainScreen extends StatelessWidget {
           : null,
       drawer: const NavigationDrawer(),
       body: Container(
-        constraints: const BoxConstraints(maxWidth: maxWidth),
+        constraints:
+            BoxConstraints(maxWidth: MediaQuery.of(context).size.width),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,

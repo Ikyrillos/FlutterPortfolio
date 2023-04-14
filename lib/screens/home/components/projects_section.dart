@@ -15,22 +15,39 @@ class ProjectsCustomGridView extends StatelessWidget {
   List<Project>? projects;
   final int crossAxisCount;
   final double childAspectRatio;
+  final scrollbarController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: childAspectRatio,
-      child: GridView.builder(
-        shrinkWrap: true,
-        itemCount: projects!.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: crossAxisCount,
-          childAspectRatio: childAspectRatio,
-          crossAxisSpacing: customPadding,
-          mainAxisSpacing: customPadding,
+      child: ScrollbarTheme(
+        data: ScrollbarThemeData(
+          thumbVisibility: MaterialStateProperty.all(false),
+          thumbColor: MaterialStateProperty.all(Colors.transparent),
+          mainAxisMargin: 8,
+          minThumbLength: 8,
+          interactive: false,
+          radius: const Radius.circular(8),
         ),
-        itemBuilder: (context, index) => ProjectWindow(
-          project: projects![index],
+        child: Scrollbar(
+          controller: scrollbarController,
+          thickness: 0,
+          thumbVisibility: false,
+          child: GridView.builder(
+            controller: scrollbarController,
+            shrinkWrap: true,
+            itemCount: projects!.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: crossAxisCount,
+              childAspectRatio: childAspectRatio,
+              crossAxisSpacing: customPadding,
+              mainAxisSpacing: customPadding,
+            ),
+            itemBuilder: (context, index) => ProjectWindow(
+              project: projects![index],
+            ),
+          ),
         ),
       ),
     );

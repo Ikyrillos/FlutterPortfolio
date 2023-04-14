@@ -33,14 +33,15 @@ class LeftSideMenu extends StatelessWidget {
                   children: [
                     AreaInfoText(label: 'Country:', text: 'Egypt'),
                     AreaInfoText(label: 'City:', text: 'Cairo'),
-                    AreaInfoText(label: 'Age', text: '23'),
+                    AreaInfoText(
+                        label: 'Age', text: '${DateTime.now().year - 1999}'),
                     const Divider(),
                     const SectionTitle(label: 'Skills'),
                     Row(
                       children: const [
                         Expanded(
                           child: AnimatedCircularIndicator(
-                            percentageValue: 0.8,
+                            percentageValue: 0.95,
                             label: 'Flutter',
                           ),
                         ),
@@ -49,7 +50,7 @@ class LeftSideMenu extends StatelessWidget {
                         ),
                         Expanded(
                           child: AnimatedCircularIndicator(
-                            percentageValue: 0.75,
+                            percentageValue: 0.85,
                             label: 'Dart',
                           ),
                         ),
@@ -58,8 +59,8 @@ class LeftSideMenu extends StatelessWidget {
                         ),
                         Expanded(
                           child: AnimatedCircularIndicator(
-                            percentageValue: 0.60,
-                            label: 'NodeJS',
+                            percentageValue: 0.95,
+                            label: 'REST APIs',
                           ),
                         ),
                       ],
@@ -84,7 +85,7 @@ class LeftSideMenu extends StatelessWidget {
                     Link(
                       target: LinkTarget.blank,
                       uri: Uri.parse(
-                          'https://drive.google.com/file/d/1Ym0sd6XHDsEha1i4yIjvltPtWBshNvT9/view?usp=sharing'),
+                          'https://drive.google.com/file/d/1iXT1udGVY1-rT2l1HmtRDpolS-P25EUQ/view?usp=share_link'),
                       builder: (context, followLink) => TextButton(
                         onPressed: followLink,
                         child: FittedBox(

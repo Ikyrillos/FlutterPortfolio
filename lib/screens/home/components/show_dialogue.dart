@@ -44,32 +44,55 @@ void showDialogBox(BuildContext context, Project project) {
                   ),
                 ),
                 const Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/icons/github.svg',
-                      color: primaryColor,
-                      height: customPadding,
-                      width: customPadding,
-                    ),
-                    const SizedBox(width: customPadding),
-                    Link(
-                      target: LinkTarget.blank,
-                      uri: Uri.parse(project.link.toString()),
-                      builder: (context, followLink2) => TextButton(
-                        style: TextButton.styleFrom(
-                          primary: primaryColor,
+                if (project.link != null)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (project.link!.contains('github'))
+                        SvgPicture.asset(
+                          'assets/icons/github.svg',
+                          color: primaryColor,
+                          height: customPadding,
+                          width: customPadding,
                         ),
-                        onPressed: followLink2,
-                        child: const AutoSizeText(
-                          'Project repo',
-                          maxLines: 2,
+                      if (project.link!.contains('play'))
+                        Link(
+                          target: LinkTarget.blank,
+                          uri: Uri.parse(project.link.toString()),
+                          builder: (context, followLink3) => TextButton(
+                            style: TextButton.styleFrom(
+                              foregroundColor: primaryColor,
+                            ),
+                            onPressed: followLink3,
+                            child: SvgPicture.asset(
+                              'assets/icons/playstore.svg',
+                              height: 30.w,
+                              width: 40.w,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ],
-                ),
+                      const SizedBox(width: customPadding),
+                      if (!project.link!.contains('play') ||
+                          !project.link!.contains('http') ||
+                          !project.link!.contains('https'))
+                        Link(
+                          target: LinkTarget.blank,
+                          uri: Uri.parse(project.link.toString()),
+                          builder: (context, followLink2) => TextButton(
+                            style: TextButton.styleFrom(
+                              foregroundColor: primaryColor,
+                            ),
+                            onPressed: followLink2,
+                            child: AutoSizeText(
+                              project.link!.contains('github')
+                                  ? 'View on Github'
+                                  : 'No link available',
+                              maxLines: 2,
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
                 Container(
                   margin: const EdgeInsets.only(bottom: 25),
                   child: Row(

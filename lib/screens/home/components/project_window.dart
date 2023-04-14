@@ -2,6 +2,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:kyrillos/constants.dart';
+import 'package:kyrillos/core/extenstions/sized_box_extension/sized_box_.dart';
 import 'package:kyrillos/models/Project.model.dart';
 import 'package:kyrillos/screens/home/components/show_dialogue.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -49,10 +50,20 @@ class _ProjectWindowState extends State<ProjectWindow> {
           ),
           child: Column(
             children: [
+              2.vSizedBox(),
               Padding(
                 padding: const EdgeInsets.all(customPadding),
-                child: AutoSizeText(widget.project!.title.toString(),
-                    style: Theme.of(context).textTheme.labelLarge),
+                child: Container(
+                  width: 300.w,
+                  padding: const EdgeInsets.all(4.0),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: AutoSizeText(widget.project!.title.toString(),
+                      style: Theme.of(context).textTheme.labelLarge),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(customPadding),

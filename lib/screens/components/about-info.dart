@@ -27,10 +27,10 @@ class AboutInfo extends StatelessWidget {
             const Spacer(),
             AutoSizeText(
               'Kyrillos Maher',
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall,
             ),
             const AutoSizeText(
-              'Flutter Developer and Backend-Developer',
+              'Flutter Developer and Instructor',
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w200,
