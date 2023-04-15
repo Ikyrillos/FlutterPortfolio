@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:kyrillos/constants.dart';
+import 'package:kyrillos/core/constants/constants.dart';
 import 'package:kyrillos/screens/components/background_animated_tests.dart';
 import 'package:kyrillos/screens/home/theme.dart';
 
@@ -17,8 +17,8 @@ class BackgroundBanner extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset(
-            'assets/images/rwp.jpeg',
+          Image.network(
+            backgroundImg,
             fit: BoxFit.cover,
             height: currentWidth(context) < 610
                 ? MediaQuery.of(context).size.height / 2.5

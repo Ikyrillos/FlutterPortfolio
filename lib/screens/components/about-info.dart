@@ -3,7 +3,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:kyrillos/constants.dart';
+import 'package:kyrillos/core/constants/constants.dart';
 import 'package:url_launcher/link.dart';
 
 class AboutInfo extends StatelessWidget {
@@ -25,7 +25,8 @@ class AboutInfo extends StatelessWidget {
             ),
             const CircleAvatar(
               radius: 65,
-              backgroundImage: AssetImage('assets/images/profilepic.jpg'),
+              backgroundImage: NetworkImage(
+                  profilePic),
             ),
             const Spacer(),
             AutoSizeText(

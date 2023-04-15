@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kyrillos/constants.dart';
+import 'package:kyrillos/core/constants/constants.dart';
 
 class SectionTitle extends StatelessWidget {
   const SectionTitle({

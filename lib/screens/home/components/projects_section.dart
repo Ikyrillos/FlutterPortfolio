@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:kyrillos/constants.dart';
+import 'package:kyrillos/core/constants/constants.dart';
 import 'package:kyrillos/models/Project.model.dart';
 import 'package:kyrillos/screens/home/components/project_window.dart';
 

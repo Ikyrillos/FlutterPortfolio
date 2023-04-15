@@ -2,7 +2,7 @@
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:kyrillos/constants.dart';
+import 'package:kyrillos/core/constants/constants.dart';
 
 class AnimatedCircularIndicator extends StatelessWidget {
   const AnimatedCircularIndicator(

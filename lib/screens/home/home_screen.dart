@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:kyrillos/constants.dart';
+import 'package:kyrillos/core/constants/constants.dart';
 import 'package:kyrillos/core/extenstions/sized_box_extension/sized_box_.dart';
 import 'package:kyrillos/models/Project.model.dart';
 import 'package:kyrillos/screens/home/components/background_banner.dart';

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/link.dart';
 
-import 'package:kyrillos/constants.dart';
+import 'package:kyrillos/core/constants/constants.dart';
 import 'package:kyrillos/screens/components/about-info.dart';
 import 'package:kyrillos/screens/components/animated-circular-indicator.dart';
 import 'package:kyrillos/screens/components/animated_linear_circular.dart';
