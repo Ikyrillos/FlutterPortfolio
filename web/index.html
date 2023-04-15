@@ -23,15 +23,93 @@
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="portfolio_dev">
+  <meta name="apple-mobile-web-app-title" content="portfolio">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>portfolio_dev</title>
+  <title>portfolio</title>
   <link rel="manifest" href="manifest.json">
 
+  <style>
+    /* Add your styles here */
+    #loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100%;
+      background-color: #1a1a1a;
+      color: #fff;
+      font-size: 2rem;
+      font-family: monospace;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 90%;
+      }
+    }
+  
+    @keyframes blink {
+      from {
+        border-color: orange;
+      }
+      to {
+        border-color: transparent;
+      }
+    }
+  
+    #loading h1 {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: .15em solid orange;
+      animation: typing 1.5s steps(40, end) forwards,
+                 blink .5s infinite alternate;
+    }
+  
+    .spinner {
+      margin-top: 20px;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      border-left-color: orange;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+  
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  
+    .info {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      font-size: 1.5rem;
+    }
+  
+    .info img {
+      margin-right: 10px;
+      width: 50px;
+      height: 50px;
+    }
+  
+  </style>
   <script>
     // The value below is injected by flutter build, do not touch.
     var serviceWorkerVersion = null;
@@ -39,20 +117,30 @@
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
-<body>
-  <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        }
-      }).then(function(engineInitializer) {
-        return engineInitializer.initializeEngine();
-      }).then(function(appRunner) {
-        return appRunner.runApp();
+<div id="loading">
+  <h1>"Code is poetry, not just instruction"</h1>
+  <div class="spinner"></div>
+  <div class="info">
+    <img  src="https://seekicon.com/free-icon-download/flutter_2.svg" alt="Flutter Logo" width="100" height="100">
+    <h2 class="developer">Flutter Developer</h2>
+  </div>
+</div>
+<script>
+      window.addEventListener('load', function(ev) {
+        var loading = document.querySelector('#loading');
+        _flutter.loader.loadEntrypoint({
+          serviceWorker: {
+            serviceWorkerVersion: serviceWorkerVersion,
+          },
+          onEntrypointLoaded: async function(engineInitializer) {
+            let appRunner = await engineInitializer.initializeEngine();
+            await appRunner.runApp();
+            setTimeout(function() {
+              loading.style.display = 'none'; // Hide the loading spinner
+            }, 2000);
+          }
+        });
       });
-    });
   </script>
 </body>
 </html>

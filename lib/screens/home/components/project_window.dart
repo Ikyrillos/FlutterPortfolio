@@ -74,6 +74,7 @@ class _ProjectWindowState extends State<ProjectWindow> {
                   ),
                 ),
               ),
+              16.vSizedBox(),
               Padding(
                 padding: const EdgeInsets.all(customPadding),
                 child: AutoSizeText(
