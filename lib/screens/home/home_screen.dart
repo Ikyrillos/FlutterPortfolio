@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:kyrillos/constants.dart';
+import 'package:kyrillos/core/extenstions/sized_box_extension/sized_box_.dart';
 import 'package:kyrillos/models/Project.model.dart';
 import 'package:kyrillos/screens/home/components/background_banner.dart';
 import 'package:kyrillos/screens/home/components/projects_section.dart';
@@ -29,17 +30,18 @@ class HomeScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            12.vSizedBox(),
             Padding(
               padding: const EdgeInsets.all(customPadding),
               child: Text(
                 "My Projects",
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
-            const SizedBox(height: customPadding),
             Padding(
               padding: const EdgeInsets.only(
                 right: customPadding,
+                top: 12.0,
               ),
               child: StreamBuilder(
                 stream: getProjectList(),

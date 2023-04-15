@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:kyrillos/constants.dart';
 import 'package:kyrillos/models/Project.model.dart';
 import 'package:kyrillos/screens/home/components/project_window.dart';
@@ -34,18 +35,30 @@ class ProjectsCustomGridView extends StatelessWidget {
           controller: scrollbarController,
           thickness: 0,
           thumbVisibility: false,
-          child: GridView.builder(
-            controller: scrollbarController,
-            shrinkWrap: true,
-            itemCount: projects!.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: crossAxisCount,
-              childAspectRatio: childAspectRatio,
-              crossAxisSpacing: customPadding,
-              mainAxisSpacing: customPadding,
-            ),
-            itemBuilder: (context, index) => ProjectWindow(
-              project: projects![index],
+          child: AnimationLimiter(
+            child: GridView.builder(
+              controller: scrollbarController,
+              shrinkWrap: true,
+              padding: EdgeInsets.zero,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: projects!.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
+                childAspectRatio: childAspectRatio,
+                crossAxisSpacing: customPadding,
+                mainAxisSpacing: customPadding,
+              ),
+              itemBuilder: (context, index) =>
+                  AnimationConfiguration.staggeredGrid(
+                columnCount: crossAxisCount,
+                position: index,
+                duration: const Duration(milliseconds: 600),
+                child: FadeInAnimation(
+                  child: ProjectWindow(
+                    project: projects![index],
+                  ),
+                ),
+              ),
             ),
           ),
         ),
@@ -73,15 +86,21 @@ class _CustomListViewBuilderState extends State<CustomListViewBuilder> {
   Widget build(BuildContext context) {
     return ScrollConfiguration(
       behavior: MyCustomScrollBehavior(),
-      child: ListView.separated(
-        separatorBuilder: (context, index) => const SizedBox(
-          height: 4,
-        ),
-        controller: controller,
-        shrinkWrap: true,
-        itemCount: CustomListViewBuilder.project.length,
-        itemBuilder: (context, index) => ListTile(
-          title: ProjectListTile(project: CustomListViewBuilder.project[index]),
+      child: AnimationLimiter(
+        child: ListView.separated(
+          separatorBuilder: (context, index) => const SizedBox(
+            height: 4,
+          ),
+          controller: controller,
+          shrinkWrap: true,
+          itemCount: CustomListViewBuilder.project.length,
+          itemBuilder: (context, index) => AnimationConfiguration.staggeredList(
+            position: index,
+            duration: const Duration(milliseconds: 600),
+            child: FadeInAnimation(
+                child: ProjectListTile(
+                    project: CustomListViewBuilder.project[index])),
+          ),
         ),
       ),
     );

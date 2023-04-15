@@ -24,7 +24,7 @@ class _ProjectWindowState extends State<ProjectWindow> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 10,
+      aspectRatio: 1,
       child: InkWell(
         onHover: (val) {
           setState(() {
@@ -36,7 +36,8 @@ class _ProjectWindowState extends State<ProjectWindow> {
         },
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: 300.h,
+          height: 500.w,
+          constraints: BoxConstraints(minHeight: 500.w),
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
@@ -54,17 +55,23 @@ class _ProjectWindowState extends State<ProjectWindow> {
             children: [
               2.vSizedBox(),
               Padding(
-                padding: const EdgeInsets.all(customPadding),
+                padding: const EdgeInsets.only(
+                  left: customPadding,
+                  right: customPadding,
+                  top: 20.0,
+                ),
                 child: Container(
                   width: 300.w,
-                  padding: const EdgeInsets.all(4.0),
-                  alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: primaryColor.withOpacity(0.75),
                     borderRadius: BorderRadius.circular(12.0),
                   ),
-                  child: AutoSizeText(widget.project!.title.toString(),
-                      style: Theme.of(context).textTheme.labelLarge),
+                  padding: const EdgeInsets.all(4.0),
+                  child: Center(
+                    child: AutoSizeText(widget.project!.title.toString(),
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.labelLarge),
+                  ),
                 ),
               ),
               Padding(
@@ -80,7 +87,7 @@ class _ProjectWindowState extends State<ProjectWindow> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   fixedSize: Size(100.w, 20.h),
-                  backgroundColor: primaryColor.withOpacity(0.5),
+                  backgroundColor: primaryColor.withOpacity(0.8),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(radius),
                   ),
@@ -187,7 +194,7 @@ class _ProjectListTileState extends State<ProjectListTile> {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(300.w, 35.h),
-                    backgroundColor: primaryColor.withOpacity(0.5),
+                    backgroundColor: primaryColor.withOpacity(0.8),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(radius),
                     ),
