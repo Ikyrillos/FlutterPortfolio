@@ -63,7 +63,7 @@ class _ProjectWindowState extends State<ProjectWindow> {
                 child: Container(
                   width: 300.w,
                   decoration: BoxDecoration(
-                    color: primaryColor.withOpacity(0.75),
+                    color: primaryColor.withOpacity(0.8),
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   padding: const EdgeInsets.all(4.0),
@@ -175,7 +175,7 @@ class _ProjectListTileState extends State<ProjectListTile> {
                     padding: const EdgeInsets.all(4.0),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: primaryColor.withOpacity(0.5),
+                      color: primaryColor.withOpacity(0.8),
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: AutoSizeText(widget.project!.title.toString(),
