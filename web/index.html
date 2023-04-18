@@ -162,7 +162,9 @@
           },
           onEntrypointLoaded: async function(engineInitializer) {
             let appRunner = await engineInitializer.initializeEngine();
-            await appRunner.runApp();
+            setTimeout(async () => {
+              await appRunner.runApp();
+            }, 3000);
             
           }
         });         
