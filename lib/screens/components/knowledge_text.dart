@@ -11,11 +11,7 @@ class KnowledgeText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(
-          width: 20.h,
-          child:
-              SvgPicture.asset('assets/icons/check.svg', fit: BoxFit.contain),
-        ),
+        Icon(Icons.check_outlined, color: primaryColor, size: 15.h),
         const SizedBox(
           width: customPadding / 2,
         ),

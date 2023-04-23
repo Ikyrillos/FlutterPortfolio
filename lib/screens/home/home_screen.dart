@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
       children: [
         BackgroundBanner(),
         Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             12.vSizedBox(),
@@ -55,6 +55,7 @@ class HomeScreen extends StatelessWidget {
                           )
                         : ProjectsCustomGridView(
                             projects: projects,
+                            childAspectRatio: 1,
                           );
                   } else {
                     return const Center(
@@ -66,6 +67,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
             ),
+            50.vSizedBox(),
           ],
         )
       ],

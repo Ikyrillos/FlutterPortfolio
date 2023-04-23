@@ -23,10 +23,10 @@ class AboutInfo extends StatelessWidget {
             const Spacer(
               flex: 2,
             ),
-            const CircleAvatar(
+            CircleAvatar(
               radius: 65,
-              backgroundImage: NetworkImage(
-                  profilePic),
+              backgroundImage: Image.asset(
+                  profilePic).image,
             ),
             const Spacer(),
             AutoSizeText(

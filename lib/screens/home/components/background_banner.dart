@@ -17,7 +17,7 @@ class BackgroundBanner extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          Image.network(
+          Image.asset(
             backgroundImg,
             fit: BoxFit.cover,
             height: currentWidth(context) < 610
@@ -37,7 +37,7 @@ class BackgroundBanner extends StatelessWidget {
                     style: MediaQuery.of(context).size.width > 800
                         ? Theme.of(context)
                             .textTheme
-                            .headline4!
+                            .headlineMedium!
                             .copyWith(color: Colors.white)
                         : Theme.of(context)
                             .textTheme
