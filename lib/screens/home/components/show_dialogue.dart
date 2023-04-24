@@ -7,6 +7,7 @@ import 'package:kyrillos/core/constants/constants.dart';
 import 'package:kyrillos/core/extenstions/sized_box_extension/sized_box_.dart';
 import 'package:kyrillos/models/Project.model.dart';
 import 'package:kyrillos/screens/home/theme.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:url_launcher/link.dart';
 
 void showDialogBox(BuildContext context, Project project) {
@@ -85,12 +86,8 @@ void showDialogBox(BuildContext context, Project project) {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       if (project.link!.contains('github'))
-                        SvgPicture.asset(
-                          'assets/icons/github.svg',
-                          color: primaryColor,
-                          height: customPadding,
-                          width: customPadding,
-                        ),
+                        const Icon(LineAwesomeIcons.github,
+                            color: primaryColor, size: 34),
                       if (project.link!.contains('play'))
                         Link(
                           target: LinkTarget.blank,
@@ -100,14 +97,20 @@ void showDialogBox(BuildContext context, Project project) {
                               foregroundColor: primaryColor,
                             ),
                             onPressed: followLink3,
-                            child: SvgPicture.asset(
-                              'assets/icons/playstore.svg',
-                              height: MediaQuery.of(context).size.height * 0.05,
-                              width: MediaQuery.of(context).size.width * 0.05,
+                            child: Row(
+                              children: const [
+                                Icon(LineAwesomeIcons.google_play,
+                                    color: primaryColor, size: 34),
+                                SizedBox(width: 10),
+                                AutoSizeText(
+                                  'Get it on Play Store',
+                                  maxLines: 2,
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                      const SizedBox(width: customPadding),
+                      const SizedBox(width: 10),
                       if (!project.link!.contains('play') ||
                           !project.link!.contains('http') ||
                           !project.link!.contains('https'))
@@ -223,12 +226,8 @@ void showMobileDialogBox(BuildContext context, Project project) {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 if (project.link!.contains('github'))
-                  SvgPicture.asset(
-                    'assets/icons/github.svg',
-                    color: primaryColor,
-                    height: customPadding,
-                    width: customPadding,
-                  ),
+                  const Icon(LineAwesomeIcons.github,
+                      color: primaryColor, size: 34),
                 if (project.link!.contains('play'))
                   Link(
                     target: LinkTarget.blank,
@@ -238,10 +237,16 @@ void showMobileDialogBox(BuildContext context, Project project) {
                         foregroundColor: primaryColor,
                       ),
                       onPressed: followLink3,
-                      child: SvgPicture.asset(
-                        'assets/icons/playstore.svg',
-                        height: MediaQuery.of(context).size.height * 0.05,
-                        width: MediaQuery.of(context).size.width * 0.05,
+                      child: Row(
+                        children: const [
+                          Icon(LineAwesomeIcons.google_play,
+                              color: primaryColor, size: 34),
+                          SizedBox(width: 10),
+                          AutoSizeText(
+                            'Get it on Play Store',
+                            maxLines: 2,
+                          ),
+                        ],
                       ),
                     ),
                   ),

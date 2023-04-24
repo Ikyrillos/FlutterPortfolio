@@ -1,5 +1,5 @@
 name: kyrillos
-description: A new Flutter project.
+description: A professional flutter developer and instructor.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -15,7 +15,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+4.2
+version: 1.0.0+5.3
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
@@ -37,6 +37,7 @@ dependencies:
   flutter_staggered_animations: ^1.1.1
   flutter_svg: ^0.22.0
   google_fonts: ^2.1.0
+  line_awesome_flutter: ^2.0.0
   url_launcher: ^6.1.4
 
 dev_dependencies:

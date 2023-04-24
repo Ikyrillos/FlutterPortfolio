@@ -8,6 +8,7 @@ import 'package:kyrillos/core/extenstions/sized_box_extension/sized_box_.dart';
 import 'package:kyrillos/models/Project.model.dart';
 import 'package:kyrillos/screens/home/components/show_dialogue.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 // ignore: must_be_immutable
 class ProjectWindow extends StatefulWidget {
@@ -85,18 +86,41 @@ class _ProjectWindowState extends State<ProjectWindow> {
                 ),
               ),
               const Spacer(),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  fixedSize: Size(100.w, 20.h),
-                  backgroundColor: primaryColor.withOpacity(0.8),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(radius),
-                  ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: [
+                    const Icon(
+                      LineAwesomeIcons.github,
+                      color: Colors.white,
+                    ),
+                    if (widget.project!.link != null)
+                      if (widget.project!.link!.contains('play'))
+                        Row(
+                          children: [
+                            8.hSizedBox(),
+                            const Icon(
+                              LineAwesomeIcons.google_play,
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                    const Spacer(),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        fixedSize: Size(100.w, 20.h),
+                        backgroundColor: primaryColor.withOpacity(0.8),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(radius),
+                        ),
+                      ),
+                      onPressed: () {
+                        showDialogBox(context, widget.project!);
+                      },
+                      child: const Text('View'),
+                    ),
+                  ],
                 ),
-                onPressed: () {
-                  showDialogBox(context, widget.project!);
-                },
-                child: const Text('View'),
               ),
               16.vSizedBox(),
             ],
@@ -192,18 +216,41 @@ class _ProjectListTileState extends State<ProjectListTile> {
                   ),
                 ),
                 const Spacer(),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: Size(300.w, 35.h),
-                    backgroundColor: primaryColor.withOpacity(0.8),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(radius),
-                    ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        LineAwesomeIcons.github,
+                        color: Colors.white,
+                      ),
+                      if (widget.project!.link != null)
+                        if (widget.project!.link!.contains('play'))
+                          Row(
+                            children: [
+                              8.hSizedBox(),
+                              const Icon(
+                                LineAwesomeIcons.google_play,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
+                      const Spacer(),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          fixedSize: Size(300.w, 35.h),
+                          backgroundColor: primaryColor.withOpacity(0.8),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(radius),
+                          ),
+                        ),
+                        onPressed: () {
+                          showMobileDialogBox(context, widget.project!);
+                        },
+                        child: const Text('View'),
+                      ),
+                    ],
                   ),
-                  onPressed: () {
-                    showMobileDialogBox(context, widget.project!);
-                  },
-                  child: const Text('View'),
                 ),
                 16.vSizedBox(),
               ],
