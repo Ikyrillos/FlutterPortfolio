@@ -23,41 +23,44 @@ class ProjectsCustomGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: childAspectRatio,
-      child: ScrollbarTheme(
-        data: ScrollbarThemeData(
-          thumbVisibility: MaterialStateProperty.all(false),
-          thumbColor: MaterialStateProperty.all(Colors.transparent),
-          mainAxisMargin: 8,
-          minThumbLength: 8,
-          interactive: false,
-          radius: const Radius.circular(8),
-        ),
-        child: Scrollbar(
-          controller: scrollbarController,
-          thickness: 0,
-          thumbVisibility: false,
-          child: AnimationLimiter(
-            child: GridView.builder(
-              controller: scrollbarController,
-              shrinkWrap: true,
-              padding: EdgeInsets.zero,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: projects!.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: crossAxisCount,
-                childAspectRatio: childAspectRatio,
-                crossAxisSpacing: customPadding,
-                mainAxisSpacing: customPadding,
-                mainAxisExtent: 200.w,
-              ),
-              itemBuilder: (context, index) =>
-                  AnimationConfiguration.staggeredGrid(
-                columnCount: crossAxisCount,
-                position: index,
-                duration: const Duration(milliseconds: 600),
-                child: FadeInAnimation(
-                  child: ProjectWindow(
-                    project: projects![index],
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child: ScrollbarTheme(
+          data: ScrollbarThemeData(
+            thumbVisibility: MaterialStateProperty.all(false),
+            thumbColor: MaterialStateProperty.all(Colors.transparent),
+            mainAxisMargin: 8,
+            minThumbLength: 8,
+            interactive: false,
+            radius: const Radius.circular(8),
+          ),
+          child: Scrollbar(
+            controller: scrollbarController,
+            thickness: 0,
+            thumbVisibility: false,
+            child: AnimationLimiter(
+              child: GridView.builder(
+                controller: scrollbarController,
+                shrinkWrap: true,
+                padding: EdgeInsets.zero,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: projects!.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxisCount,
+                  childAspectRatio: childAspectRatio,
+                  crossAxisSpacing: customPadding,
+                  mainAxisSpacing: customPadding,
+                  mainAxisExtent: 200.w,
+                ),
+                itemBuilder: (context, index) =>
+                    AnimationConfiguration.staggeredGrid(
+                  columnCount: crossAxisCount,
+                  position: index,
+                  duration: const Duration(milliseconds: 600),
+                  child: FadeInAnimation(
+                    child: ProjectWindow(
+                      project: projects![index],
+                    ),
                   ),
                 ),
               ),

@@ -46,7 +46,7 @@ class LeftSideMenu extends StatelessWidget {
                             children: [
                               Text(
                                 'Download CV',
-                                style: Theme.of(context).textTheme.subtitle2,
+                                style: Theme.of(context).textTheme.titleSmall,
                               ),
                               const SizedBox(
                                 width: customPadding,
@@ -93,8 +93,8 @@ class LeftSideMenu extends StatelessWidget {
                     ),
                     const Divider(),
                     const SectionTitle(label: 'Skills'),
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         Expanded(
                           child: AnimatedCircularIndicator(
                             percentageValue: 0.95,
@@ -130,7 +130,7 @@ class LeftSideMenu extends StatelessWidget {
                       padding: const EdgeInsets.all(customPadding),
                       child: Text(
                         'Technologies',
-                        style: Theme.of(context).textTheme.subtitle2,
+                        style: Theme.of(context).textTheme.titleSmall,
                       ),
                     ),
                     const KnowledgeText(text: 'Flutter, Dart, OOP, Bloc'),
@@ -154,9 +154,9 @@ class Coding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         AnimatedLinearProgressIndicator(label: 'APIs', percentageValue: 0.80),
         AnimatedLinearProgressIndicator(
             label: 'Typescript', percentageValue: 0.60),

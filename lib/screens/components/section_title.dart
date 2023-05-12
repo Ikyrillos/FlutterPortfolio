@@ -15,7 +15,7 @@ class SectionTitle extends StatelessWidget {
         children: [
           Text(
             label,
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.titleSmall,
           ),
         ],
       ),

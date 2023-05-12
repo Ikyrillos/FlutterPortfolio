@@ -31,7 +31,7 @@ class AnimatedCircularIndicator extends StatelessWidget {
                 Center(
                   child: AutoSizeText(
                     '${(value * 100).toInt()}%',
-                    style: Theme.of(context).textTheme.subtitle1,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
               ],
@@ -43,7 +43,7 @@ class AnimatedCircularIndicator extends StatelessWidget {
         ),
         Text(
           label,
-          style: Theme.of(context).textTheme.subtitle2,
+          style: Theme.of(context).textTheme.titleSmall,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),

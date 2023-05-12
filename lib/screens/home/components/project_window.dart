@@ -27,6 +27,7 @@ class _ProjectWindowState extends State<ProjectWindow> {
     return AspectRatio(
       aspectRatio: 1,
       child: InkWell(
+        overlayColor: MaterialStateProperty.all(Colors.transparent),
         onHover: (val) {
           setState(() {
             isHover = val;

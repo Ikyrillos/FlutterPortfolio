@@ -2,7 +2,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kyrillos/core/constants/constants.dart';
 import 'package:kyrillos/core/extenstions/sized_box_extension/sized_box_.dart';
 import 'package:kyrillos/models/Project.model.dart';
@@ -35,7 +34,7 @@ void showDialogBox(BuildContext context, Project project) {
                   padding: const EdgeInsets.all(customPadding),
                   child: AutoSizeText(
                     project.title.toString(),
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
                 const SizedBox(height: customPadding),
@@ -97,8 +96,8 @@ void showDialogBox(BuildContext context, Project project) {
                               foregroundColor: primaryColor,
                             ),
                             onPressed: followLink3,
-                            child: Row(
-                              children: const [
+                            child: const Row(
+                              children: [
                                 Icon(LineAwesomeIcons.google_play,
                                     color: primaryColor, size: 34),
                                 SizedBox(width: 10),
@@ -185,7 +184,7 @@ void showMobileDialogBox(BuildContext context, Project project) {
               padding: const EdgeInsets.all(customPadding),
               child: AutoSizeText(
                 project.title.toString(),
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
             const SizedBox(height: customPadding),
@@ -237,8 +236,8 @@ void showMobileDialogBox(BuildContext context, Project project) {
                         foregroundColor: primaryColor,
                       ),
                       onPressed: followLink3,
-                      child: Row(
-                        children: const [
+                      child: const Row(
+                        children: [
                           Icon(LineAwesomeIcons.google_play,
                               color: primaryColor, size: 34),
                           SizedBox(width: 10),

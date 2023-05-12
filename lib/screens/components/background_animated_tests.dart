@@ -9,7 +9,7 @@ class BackgroundAnimatedTexts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTextStyle(
-      style: Theme.of(context).textTheme.subtitle1!,
+      style: Theme.of(context).textTheme.titleMedium!,
       child: Row(
         children: [
           const Text('I create and develop '),
