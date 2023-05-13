@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kyrillos/core/constants/constants.dart';
 
 class SectionTitle extends StatelessWidget {
   const SectionTitle({
@@ -10,7 +9,7 @@ class SectionTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: customPadding),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         children: [
           Text(

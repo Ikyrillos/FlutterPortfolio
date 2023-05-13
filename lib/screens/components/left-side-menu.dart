@@ -1,14 +1,11 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:icons_plus/icons_plus.dart' show BoxIcons, Bootstrap;
 import 'package:url_launcher/link.dart';
-
 import 'package:kyrillos/core/constants/constants.dart';
 import 'package:kyrillos/screens/components/about-info.dart';
 import 'package:kyrillos/screens/components/animated-circular-indicator.dart';
-import 'package:kyrillos/screens/components/animated_linear_circular.dart';
-import 'package:kyrillos/screens/components/knowledge_text.dart';
 import 'package:kyrillos/screens/components/section_title.dart';
 import 'package:kyrillos/screens/home/components/area-info-text.dart';
 
@@ -49,9 +46,13 @@ class LeftSideMenu extends StatelessWidget {
                                 style: Theme.of(context).textTheme.titleSmall,
                               ),
                               const SizedBox(
-                                width: customPadding,
+                                width: 8,
                               ),
-                              SvgPicture.asset('assets/icons/download.svg'),
+                              const Icon(
+                                BoxIcons.bx_download,
+                                size: 16,
+                                color: Colors.white,
+                              ),
                             ],
                           ),
                         ),
@@ -70,20 +71,18 @@ class LeftSideMenu extends StatelessWidget {
                               uri: Uri.parse(
                                   'https://www.linkedin.com/in/kyrillosmaher/'),
                               builder: (context, followLink) => IconButton(
-                                splashRadius: 23,
+                                splashRadius: 2,
                                 onPressed: followLink,
-                                icon: SvgPicture.asset(
-                                    'assets/icons/linkedin.svg'),
+                                icon: const Icon(BoxIcons.bxl_linkedin),
                               ),
                             ),
                             Link(
                               target: LinkTarget.blank,
                               uri: Uri.parse('https://github.com/Ikyrillos'),
                               builder: (context, followLink2) => IconButton(
-                                splashRadius: 23,
+                                splashRadius: 2,
                                 onPressed: followLink2,
-                                icon:
-                                    SvgPicture.asset('assets/icons/github.svg'),
+                                icon: const Icon(BoxIcons.bxl_github),
                               ),
                             ),
                             const Spacer(),
@@ -92,52 +91,43 @@ class LeftSideMenu extends StatelessWidget {
                       ),
                     ),
                     const Divider(),
-                    const SectionTitle(label: 'Skills'),
-                    const Row(
-                      children: [
-                        Expanded(
-                          child: AnimatedCircularIndicator(
-                            percentageValue: 0.95,
-                            label: 'Flutter',
+                    const SectionTitle(label: 'Skills:'),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.15,
+                      child: const Row(
+                        children: [
+                          Expanded(
+                            child: SkillWidget(
+                              iconData: BoxIcons.bxl_flutter,
+                              label: 'Flutter',
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: customPadding,
-                        ),
-                        Expanded(
-                          child: AnimatedCircularIndicator(
-                            percentageValue: 0.85,
-                            label: 'Dart',
+                          SizedBox(
+                            width: customPadding,
                           ),
-                        ),
-                        SizedBox(
-                          width: customPadding,
-                        ),
-                        Expanded(
-                          child: AnimatedCircularIndicator(
-                            percentageValue: 0.95,
-                            label: 'REST APIs',
+                          Expanded(
+                            child: SkillWidget(
+                              iconData: BoxIcons.bxl_android,
+                              label: 'Android',
+                            ),
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            width: customPadding,
+                          ),
+                          Expanded(
+                            child: SkillWidget(
+                              iconData: Bootstrap.gear_fill,
+                              label: 'REST APIs',
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     const Divider(
                       height: 20,
                     ),
+                    const SectionTitle(label: 'Worked With:'),
                     const Coding(),
-                    const Divider(),
-                    Padding(
-                      padding: const EdgeInsets.all(customPadding),
-                      child: Text(
-                        'Technologies',
-                        style: Theme.of(context).textTheme.titleSmall,
-                      ),
-                    ),
-                    const KnowledgeText(text: 'Flutter, Dart, OOP, Bloc'),
-                    const KnowledgeText(text: 'SQL, PostgreSQL'),
-                    const KnowledgeText(text: 'NodeJS, Express'),
-                    const KnowledgeText(text: 'Firebase, TypeScript, Git'),
-                    const Divider(),
                   ],
                 ),
               ),
@@ -151,20 +141,33 @@ class LeftSideMenu extends StatelessWidget {
 
 class Coding extends StatelessWidget {
   const Coding({Key? key}) : super(key: key);
-
+  final List<IconData> skillIcons = const [
+    BoxIcons.bxl_typescript,
+    BoxIcons.bxl_firebase,
+    BoxIcons.bxl_javascript,
+    BoxIcons.bxl_html5,
+    BoxIcons.bxl_css3,
+    BoxIcons.bxl_postgresql,
+    Bootstrap.database,
+    BoxIcons.bxl_flask,
+    BoxIcons.bxl_figma,
+    BoxIcons.bxl_github,
+    BoxIcons.bxl_play_store,
+    BoxIcons.bxl_slack,
+    BoxIcons.bxl_trello,
+    BoxIcons.bxl_visual_studio,
+    BoxIcons.bxl_zoom,
+  ];
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Wrap(
       children: [
-        AnimatedLinearProgressIndicator(label: 'APIs', percentageValue: 0.80),
-        AnimatedLinearProgressIndicator(
-            label: 'Typescript', percentageValue: 0.60),
-        AnimatedLinearProgressIndicator(
-            label: 'Firebase', percentageValue: 0.70),
-        AnimatedLinearProgressIndicator(label: 'Git', percentageValue: 0.65),
-        AnimatedLinearProgressIndicator(
-            label: 'JavaScript, Html, CSS ', percentageValue: 0.60),
+        ...skillIcons.map((e) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(e, size: 45),
+          );
+        }).toList(),
       ],
     );
   }

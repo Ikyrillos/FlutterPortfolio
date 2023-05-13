@@ -3,12 +3,12 @@ import 'dart:developer';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:icons_plus/icons_plus.dart' show Bootstrap;
 import 'package:kyrillos/core/constants/constants.dart';
 import 'package:kyrillos/core/extenstions/sized_box_extension/sized_box_.dart';
 import 'package:kyrillos/models/Project.model.dart';
 import 'package:kyrillos/screens/home/components/show_dialogue.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 // ignore: must_be_immutable
 class ProjectWindow extends StatefulWidget {
@@ -92,7 +92,7 @@ class _ProjectWindowState extends State<ProjectWindow> {
                 child: Row(
                   children: [
                     const Icon(
-                      LineAwesomeIcons.github,
+                      Bootstrap.github,
                       color: Colors.white,
                     ),
                     if (widget.project!.link != null)
@@ -101,7 +101,7 @@ class _ProjectWindowState extends State<ProjectWindow> {
                           children: [
                             8.hSizedBox(),
                             const Icon(
-                              LineAwesomeIcons.google_play,
+                              Bootstrap.google_play,
                               color: Colors.white,
                             ),
                           ],
@@ -222,7 +222,7 @@ class _ProjectListTileState extends State<ProjectListTile> {
                   child: Row(
                     children: [
                       const Icon(
-                        LineAwesomeIcons.github,
+                        Bootstrap.github,
                         color: Colors.white,
                       ),
                       if (widget.project!.link != null)
@@ -231,7 +231,7 @@ class _ProjectListTileState extends State<ProjectListTile> {
                             children: [
                               8.hSizedBox(),
                               const Icon(
-                                LineAwesomeIcons.google_play,
+                                Bootstrap.google_play,
                                 color: Colors.white,
                               ),
                             ],

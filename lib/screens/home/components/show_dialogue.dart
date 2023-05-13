@@ -2,11 +2,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:icons_plus/icons_plus.dart' show Bootstrap;
 import 'package:kyrillos/core/constants/constants.dart';
 import 'package:kyrillos/core/extenstions/sized_box_extension/sized_box_.dart';
 import 'package:kyrillos/models/Project.model.dart';
 import 'package:kyrillos/screens/home/theme.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:url_launcher/link.dart';
 
 void showDialogBox(BuildContext context, Project project) {
@@ -85,7 +85,7 @@ void showDialogBox(BuildContext context, Project project) {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       if (project.link!.contains('github'))
-                        const Icon(LineAwesomeIcons.github,
+                        const Icon(Bootstrap.github,
                             color: primaryColor, size: 34),
                       if (project.link!.contains('play'))
                         Link(
@@ -98,7 +98,7 @@ void showDialogBox(BuildContext context, Project project) {
                             onPressed: followLink3,
                             child: const Row(
                               children: [
-                                Icon(LineAwesomeIcons.google_play,
+                                Icon(Bootstrap.google_play,
                                     color: primaryColor, size: 34),
                                 SizedBox(width: 10),
                                 AutoSizeText(
@@ -225,8 +225,7 @@ void showMobileDialogBox(BuildContext context, Project project) {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 if (project.link!.contains('github'))
-                  const Icon(LineAwesomeIcons.github,
-                      color: primaryColor, size: 34),
+                  const Icon(Bootstrap.github, color: primaryColor, size: 34),
                 if (project.link!.contains('play'))
                   Link(
                     target: LinkTarget.blank,
@@ -238,7 +237,7 @@ void showMobileDialogBox(BuildContext context, Project project) {
                       onPressed: followLink3,
                       child: const Row(
                         children: [
-                          Icon(LineAwesomeIcons.google_play,
+                          Icon(Bootstrap.google_play,
                               color: primaryColor, size: 34),
                           SizedBox(width: 10),
                           AutoSizeText(

@@ -232,6 +232,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  icons_plus:
+    dependency: "direct main"
+    description:
+      name: icons_plus
+      sha256: b613ec1deac96e9ef5c8065f2d7325967818bc3f4e118a375e50292761849ea6
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.0"
   js:
     dependency: transitive
     description:
@@ -240,14 +248,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.7"
-  line_awesome_flutter:
-    dependency: "direct main"
-    description:
-      name: line_awesome_flutter
-      sha256: "7e1beb342895d7da40d40047d193f8ecfd494355b399dc3d92912c31ccc4d808"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
   lints:
     dependency: transitive
     description:
