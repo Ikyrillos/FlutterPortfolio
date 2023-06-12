@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:kyrillos/core/constants/constants.dart';
 import 'package:kyrillos/core/extenstions/sized_box_extension/sized_box_.dart';
@@ -10,10 +12,27 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      extendBody: true,
       appBar: currentWidth(context) < 1128
-          ? AppBar(
-              title: const Text('Portfolio'),
-              centerTitle: true,
+          ? PreferredSize(
+              preferredSize: const Size(
+                double.infinity,
+                56.0,
+              ),
+              child: ClipRRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                  child: AppBar(
+                    title: const Text('Portfolio'),
+                    centerTitle: true,
+                    leading: null,
+                    elevation: 0.0,
+                    backgroundColor: Colors.black.withOpacity(0.2),
+                    surfaceTintColor: Colors.black.withOpacity(0.2),
+                  ),
+                ),
+              ),
             )
           : null,
       drawer: const NavigationDrawer(),

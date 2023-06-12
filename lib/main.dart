@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Kyrillos Maher',
         theme: ThemeData.dark().copyWith(
+          useMaterial3: true,
           primaryColor: primaryColor,
           scaffoldBackgroundColor: bgColor,
           canvasColor: bgColor,

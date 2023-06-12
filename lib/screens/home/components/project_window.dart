@@ -44,10 +44,10 @@ class _ProjectWindowState extends State<ProjectWindow> {
             boxShadow: [
               BoxShadow(
                 color: isHover
-                    ? primaryColor.withOpacity(0.1)
+                    ? primaryColor.withOpacity(0.2)
                     : Colors.black.withOpacity(0.2),
                 offset: const Offset(0.0, 0.0),
-                blurRadius: 16.0,
+                blurRadius: 5.0,
               ),
             ],
             color: darkColor,
@@ -118,7 +118,8 @@ class _ProjectWindowState extends State<ProjectWindow> {
                       onPressed: () {
                         showDialogBox(context, widget.project!);
                       },
-                      child: const Text('View'),
+                      child: const Text('View',
+                          style: TextStyle(color: bodyTextColor)),
                     ),
                   ],
                 ),
@@ -165,10 +166,10 @@ class _ProjectListTileState extends State<ProjectListTile> {
             boxShadow: [
               BoxShadow(
                 color: isHover
-                    ? primaryColor.withOpacity(0.1)
+                    ? primaryColor.withOpacity(0.2)
                     : Colors.black.withOpacity(0.2),
                 offset: const Offset(0.0, 0.0),
-                blurRadius: 10.0,
+                blurRadius: 5.0,
               ),
             ],
             // color: darkColor,
@@ -184,7 +185,7 @@ class _ProjectListTileState extends State<ProjectListTile> {
                       ? primaryColor.withOpacity(0.1)
                       : Colors.black.withOpacity(0.2),
                   offset: const Offset(0.0, 0.0),
-                  blurRadius: 16.0,
+                  blurRadius: 1.0,
                 ),
               ],
               color: darkColor,
@@ -248,7 +249,8 @@ class _ProjectListTileState extends State<ProjectListTile> {
                         onPressed: () {
                           showMobileDialogBox(context, widget.project!);
                         },
-                        child: const Text('View'),
+                        child: const Text('View',
+                            style: TextStyle(color: bodyTextColor)),
                       ),
                     ],
                   ),

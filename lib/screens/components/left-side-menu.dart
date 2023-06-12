@@ -2,10 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart' show BoxIcons, Bootstrap;
+import 'package:kyrillos/core/constants/personal_constants.dart';
 import 'package:url_launcher/link.dart';
 import 'package:kyrillos/core/constants/constants.dart';
 import 'package:kyrillos/screens/components/about-info.dart';
-import 'package:kyrillos/screens/components/animated-circular-indicator.dart';
+import 'package:kyrillos/screens/components/skill_widget.dart';
 import 'package:kyrillos/screens/components/section_title.dart';
 import 'package:kyrillos/screens/home/components/area-info-text.dart';
 
@@ -17,8 +18,10 @@ class LeftSideMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: bgColor,
+      surfaceTintColor: bgColor,
       child: Container(
-        margin: const EdgeInsets.all(10),
+        margin: const EdgeInsets.all(8),
         child: Column(
           children: [
             const AboutInfo(),
@@ -57,6 +60,68 @@ class LeftSideMenu extends StatelessWidget {
                           ),
                         ),
                       ),
+                    ),
+                    const SizedBox(
+                      height: customPadding,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Link(
+                          target: LinkTarget.blank,
+                          uri:
+                              Uri.parse('tel:${PersonalConstants.phoneNumber}'),
+                          builder: (context, followLink) => TextButton(
+                            onPressed: followLink,
+                            child: FittedBox(
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'contact me',
+                                    style:
+                                        Theme.of(context).textTheme.titleSmall,
+                                  ),
+                                  const SizedBox(
+                                    width: 8,
+                                  ),
+                                  const Icon(
+                                    BoxIcons.bx_phone_call,
+                                    size: 16,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        // email me
+                        Link(
+                          target: LinkTarget.blank,
+                          uri: Uri.parse('mailto:${PersonalConstants.email}'),
+                          builder: (context, followLink) => TextButton(
+                            onPressed: followLink,
+                            child: FittedBox(
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'email me',
+                                    style:
+                                        Theme.of(context).textTheme.titleSmall,
+                                  ),
+                                  const SizedBox(
+                                    width: 8,
+                                  ),
+                                  const Icon(
+                                    BoxIcons.bx_mail_send,
+                                    size: 16,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: customPadding),
@@ -108,6 +173,7 @@ class LeftSideMenu extends StatelessWidget {
                           Expanded(
                             child: SkillWidget(
                               iconData: BoxIcons.bxl_android,
+                              customSize: 65,
                               label: 'Android',
                             ),
                           ),
@@ -117,6 +183,7 @@ class LeftSideMenu extends StatelessWidget {
                           Expanded(
                             child: SkillWidget(
                               iconData: Bootstrap.gear_fill,
+                              customSize: 35,
                               label: 'REST APIs',
                             ),
                           ),

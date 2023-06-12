@@ -17,3 +17,4 @@ const descriptionTextStyle = TextStyle(
 
 const String profilePic = "assets/profile.jpg";
 const backgroundImg = "assets/bg.jpg";
+

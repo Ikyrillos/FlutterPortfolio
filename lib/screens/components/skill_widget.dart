@@ -5,12 +5,18 @@ import 'package:kyrillos/core/constants/constants.dart';
 
 class SkillWidget extends StatelessWidget {
   const SkillWidget(
-      {Key? key, this.logo, required this.label, this.iconData, this.image})
+      {Key? key,
+      this.logo,
+      required this.label,
+      this.iconData,
+      this.image,
+      this.customSize = 60})
       : super(key: key);
   final String? logo;
   final IconData? iconData;
   final String? image;
   final String label;
+  final double? customSize;
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +25,8 @@ class SkillWidget extends StatelessWidget {
         if (image != null)
           Image.asset(
             image!,
-            width: 60,
-            height: 60,
+            width: customSize,
+            height: customSize,
             fit: BoxFit.contain,
           ),
         if (iconData != null)
